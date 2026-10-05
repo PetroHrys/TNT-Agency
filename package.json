@@ -22,6 +22,8 @@
     "validate:trust": "node scripts/validate-trust.js",
     "validate:tier1": "node scripts/validate-tier1.js",
     "validate:legal": "node scripts/validate-legal.js",
+    "validate:contact-email": "node scripts/validate-contact-email.mjs",
+    "test:mutate-contact-email": "node scripts/mutate-contact-email.mjs",
     "validate:eeat": "node scripts/validate-eeat.js",
     "validate:conversion": "node scripts/validate-conversion.js",
     "seo:conversion-surface": "node scripts/conversion-surface.js",

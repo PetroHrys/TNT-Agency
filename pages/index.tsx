@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { localeAlternateTags } from '../components/locale/LocaleAlternates'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { OPERATOR_EMAIL } from '../lib/content/trust-data'
 import HomePayrollCalculator from '../components/HomePayrollCalculator'
 import HomeAgencyValue from '../components/HomeAgencyValue'
 import RecruitmentProcess from '../components/RecruitmentProcess'
@@ -23,12 +24,12 @@ const employmentAgencySchema = {
     addressCountry: 'CZ',
   },
   telephone: '+420776858284',
-  email: 'jobbohemiacz@gmail.com',
+  email: OPERATOR_EMAIL,
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'recruitment',
     telephone: '+420776858284',
-    email: 'jobbohemiacz@gmail.com',
+    email: OPERATOR_EMAIL,
     availableLanguage: ['Czech', 'English', 'German'],
   },
   openingHoursSpecification: {
@@ -268,7 +269,7 @@ export default function Home() {
               <h2 data-i18n="candidates.h2">Hledáte<br />novou kariérní příležitost?</h2>
               <p data-i18n="candidates.sub">Pomáháme uchazečům najít vhodné pracovní uplatnění. Naše služba je pro uchazeče zcela <strong>zdarma</strong>.</p>
               <div className="cand-ctas" style={{ marginTop: '32px' }}>
-                <a href="mailto:jobbohemiacz@gmail.com?subject=Job%20Application" className="btn btn-accent btn-lg" data-i18n="candidates.cta1">Poslat životopis</a>
+                <a href={`mailto:${OPERATOR_EMAIL}?subject=Job%20Application`} className="btn btn-accent btn-lg" data-i18n="candidates.cta1">Poslat životopis</a>
                 <a href="/offers" className="btn btn-outline-white btn-lg">Procházet nabídky →</a>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { OPERATOR_EMAIL } from '../lib/content/trust-data'
 
 const schema = {
   '@context': 'https://schema.org',
@@ -77,7 +78,7 @@ export default function Offers() {
               {/* Rendered by script.js */}
               <div className="cand-benefits" id="candBenefits"></div>
               <div className="cand-ctas">
-                <a href="mailto:jobbohemiacz@gmail.com?subject=Job%20Application" className="btn btn-accent btn-lg" data-i18n="candidates.cta1">Poslat životopis</a>
+                <a href={`mailto:${OPERATOR_EMAIL}?subject=Job%20Application`} className="btn btn-accent btn-lg" data-i18n="candidates.cta1">Poslat životopis</a>
                 <a href="/contact" className="btn btn-outline-white btn-lg" data-i18n="candidates.cta2">Promluvit s náborářem</a>
               </div>
             </div>
@@ -86,7 +87,7 @@ export default function Offers() {
                 <div className="cand-card__label" data-i18n="candidates.card.label">Aktuálně hledáme</div>
                 {/* Rendered by script.js */}
                 <div className="cand-card__roles" id="candRoles"></div>
-                <a href="mailto:jobbohemiacz@gmail.com?subject=Job%20Application" className="cand-card__cta" data-i18n="candidates.card.link">Zobrazit všechny pozice →</a>
+                <a href={`mailto:${OPERATOR_EMAIL}?subject=Job%20Application`} className="cand-card__cta" data-i18n="candidates.card.link">Zobrazit všechny pozice →</a>
               </div>
             </div>
           </div>

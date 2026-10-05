@@ -35,7 +35,11 @@ export interface AgencyTrustData {
 
 // ── Approved constants (already verified in the repository / operator record) ─
 export const OPERATOR_LEGAL_NAME = 'TNT agency s.r.o.'
-export const OPERATOR_EMAIL = 'jobbohemiacz@gmail.com'
+// The ONE public contact address: general contact, employer requests, candidate
+// applications and privacy requests all go here. Every component, recipient
+// builder and JSON-LD node imports it; static public/*.html cannot, so
+// scripts/validate-contact-email.mjs checks the built output instead.
+export const OPERATOR_EMAIL = 'connect@talentpartnerid.com'
 export const OPERATOR_PHONE = '+420 776 858 284'
 export const OPERATOR_SEAT = 'Na Spravedlnosti 1533, Zelené Předměstí, 530 02 Pardubice'
 

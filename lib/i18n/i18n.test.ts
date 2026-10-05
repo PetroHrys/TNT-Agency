@@ -83,11 +83,12 @@ describe('localization completeness & integrity', () => {
     }
     expect(FOOTER).toContain('OPERATOR_EMAIL');
     const TRUST = fs.readFileSync(path.join(ROOT, 'lib/content/trust-data.ts'), 'utf8');
-    expect(TRUST).toContain("OPERATOR_EMAIL = 'jobbohemiacz@gmail.com'");
+    expect(TRUST).toContain("OPERATOR_EMAIL = 'connect@talentpartnerid.com'");
     // The identifier itself is byte-identical across every language block.
     for (const l of LANGS as string[]) {
-      const emails = Array.from(regions[l].matchAll(/jobbohemiacz@[\w.]+/g), (m: RegExpMatchArray) => m[0]);
-      for (const e of emails) expect(e).toBe('jobbohemiacz@gmail.com');
+      const emails = Array.from(regions[l].matchAll(/[\w.+-]+@talentpartnerid\.com/g), (m: RegExpMatchArray) => m[0]);
+      for (const e of emails) expect(e).toBe('connect@talentpartnerid.com');
+      expect(regions[l], `${l} still carries the retired address`).not.toContain('jobbohemiacz@gmail.com');
     }
   });
 

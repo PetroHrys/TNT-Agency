@@ -167,8 +167,10 @@ for (const p of ['pages/workspace', 'pages/dashboard', 'pages/login', 'pages/acc
 }
 
 // ── 8. Operator identity preserved ───────────────────────────────────────
-check('mailto recipient remains jobbohemiacz@gmail.com',
-  /OPERATOR_EMAIL = 'jobbohemiacz@gmail\.com'/.test(COPY));
+check('mailto recipient is connect@talentpartnerid.com',
+  /OPERATOR_EMAIL = 'connect@talentpartnerid\.com'/.test(read('lib/content/trust-data.ts')));
+check('employer copy re-exports the operator record, with no recipient literal of its own',
+  /import \{ OPERATOR_EMAIL \} from '\.\.\/content\/trust-data'/.test(COPY) && !/OPERATOR_EMAIL = /.test(COPY));
 check('operator remains TNT agency s.r.o.',
   /OPERATOR = 'TNT agency s\.r\.o\.'/.test(COPY));
 check('no altered legal-entity form', !/TNT agency(?! s\.r\.o\.)/.test(COPY));

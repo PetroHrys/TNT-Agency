@@ -402,6 +402,7 @@ test.describe('no personal, form or calculator data reaches analytics', () => {
       await page.waitForTimeout(1200)
       const all = net.ingest.map((r) => r.body).join('\n')
       expect(all).not.toContain('mailto:')
+      expect(all).not.toMatch(/connect(@|%40)talentpartnerid/)
       expect(all).not.toContain('jobbohemiacz')
       expect(all).not.toContain('outbound_click')
     }

@@ -19,7 +19,9 @@ const exists = (p) => fs.existsSync(path.join(ROOT, p));
 const errors = [];
 
 const OPERATOR = 'TNT agency s.r.o.';
-const EMAIL = 'jobbohemiacz@gmail.com';
+const EMAIL = 'connect@talentpartnerid.com';
+// Retired 2026-10-05. Any reappearance is a regression, not a variant.
+const RETIRED_EMAILS = ['jobbohemiacz@gmail.com'];
 const HOST = 'https://talentpartnerid.com';
 
 // ── Inventory: static legal HTML + the Next privacy route ────────────────────
@@ -106,7 +108,12 @@ for (const p of inventory) {
 for (const p of inventory) {
   if (!p.html.includes(OPERATOR)) errors.push(`${p.id}: operator "${OPERATOR}" not present`);
   if (/TNT agency(?! s\.r\.o\.)/.test(p.html)) errors.push(`${p.id}: altered operator legal form`);
-  for (const m of p.html.matchAll(/jobbohemiacz@[\w.]+/g)) if (m[0] !== EMAIL) errors.push(`${p.id}: altered contact email ${m[0]}`);
+  for (const m of p.html.matchAll(/[\w.+-]+@talentpartnerid\.com/g)) if (m[0] !== EMAIL) errors.push(`${p.id}: altered contact email ${m[0]}`);
+  for (const retired of RETIRED_EMAILS) if (p.html.includes(retired)) errors.push(`${p.id}: retired contact email ${retired}`);
+  // Every legal page must still give the reader a working contact. Static
+  // pages carry the literal; the Next route binds the verified operator record.
+  const contact = p.kind === 'static' ? p.html.includes(`href="mailto:${EMAIL}"`) : /\bOPERATOR_EMAIL\b/.test(p.html);
+  if (!contact) errors.push(`${p.id}: no mailto contact for ${EMAIL}`);
   for (const ph of ['lorem ipsum', 'TODO', 'FIXME', 'placeholder', '[Company', '[IČO', 'XXXXX']) {
     if (p.html.toLowerCase().includes(ph.toLowerCase())) errors.push(`${p.id}: placeholder "${ph}"`);
   }
