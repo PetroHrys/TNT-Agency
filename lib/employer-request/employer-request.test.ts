@@ -84,11 +84,12 @@ describe('Phase C — employer request schema & copy', () => {
 
   it('operator identity and contact email are preserved verbatim', () => {
     expect(OPERATOR).toBe('TNT agency s.r.o.')
-    expect(OPERATOR_EMAIL).toBe('jobbohemiacz@gmail.com')
+    expect(OPERATOR_EMAIL).toBe('connect@talentpartnerid.com')
     for (const l of LANGS) {
       const blob = JSON.stringify(REQUEST_COPY[l])
       expect(blob).toContain('TNT agency s.r.o.')
-      expect(blob).toContain('jobbohemiacz@gmail.com')
+      expect(blob).toContain('connect@talentpartnerid.com')
+      expect(blob).not.toContain('jobbohemiacz@gmail.com')
       // No altered legal-entity form.
       expect(/TNT agency(?! s\.r\.o\.)/.test(blob)).toBe(false)
     }
@@ -169,10 +170,10 @@ describe('Phase C — validation', () => {
 })
 
 describe('Phase C — structured mailto', () => {
-  it('sends to the preserved operator address with a triage-friendly subject', () => {
+  it('sends to the approved operator address with a triage-friendly subject', () => {
     const r = buildMailto(validValues(), 'cs')
-    expect(r.to).toBe('jobbohemiacz@gmail.com')
-    expect(r.href.startsWith('mailto:jobbohemiacz@gmail.com?')).toBe(true)
+    expect(r.to).toBe('connect@talentpartnerid.com')
+    expect(r.href.startsWith('mailto:connect@talentpartnerid.com?')).toBe(true)
     expect(r.subject).toContain('Operátor výroby')
     expect(r.subject).toContain('12×')
     expect(r.subject).toContain('Pardubice')

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { OPERATOR_EMAIL } from '../lib/content/trust-data'
 
 export default function PrivacyPolicy() {
   return (
@@ -75,7 +76,7 @@ export default function PrivacyPolicy() {
               <tbody>
                 <tr><th>Company</th><td>TNT agency s.r.o.</td></tr>
                 <tr><th>Address</th><td>Na Spravedlnosti 1533, Zelené Předměstí, 530 02 Pardubice, Czech Republic</td></tr>
-                <tr><th>Email</th><td><a href="mailto:jobbohemiacz@gmail.com">jobbohemiacz@gmail.com</a></td></tr>
+                <tr><th>Email</th><td><a href={`mailto:${OPERATOR_EMAIL}`}>{OPERATOR_EMAIL}</a></td></tr>
                 <tr><th>Phone</th><td><a href="tel:+420776858284">+420 776 858 284</a></td></tr>
               </tbody>
             </table>
@@ -122,7 +123,7 @@ export default function PrivacyPolicy() {
               <li>
                 The message travels through <strong>your chosen email provider</strong> and arrives in
                 the business inbox of TNT agency s.r.o. at{' '}
-                <a href="mailto:jobbohemiacz@gmail.com">jobbohemiacz@gmail.com</a>.
+                <a href={`mailto:${OPERATOR_EMAIL}`}>{OPERATOR_EMAIL}</a>.
               </li>
               <li>
                 <strong>This website does not store your request in a database.</strong> There is no
@@ -293,7 +294,7 @@ export default function PrivacyPolicy() {
             </ul>
             <p>
               To exercise any of these rights, email us at{' '}
-              <a href="mailto:jobbohemiacz@gmail.com">jobbohemiacz@gmail.com</a> with the subject
+              <a href={`mailto:${OPERATOR_EMAIL}`}>{OPERATOR_EMAIL}</a> with the subject
               line <em>&ldquo;GDPR Request&rdquo;</em>. We will respond within 30 days.
             </p>
 
@@ -387,7 +388,7 @@ export default function PrivacyPolicy() {
             </address>
             <p>
               We encourage you to contact us first at{' '}
-              <a href="mailto:jobbohemiacz@gmail.com">jobbohemiacz@gmail.com</a> so we can resolve
+              <a href={`mailto:${OPERATOR_EMAIL}`}>{OPERATOR_EMAIL}</a> so we can resolve
               any issues directly.
             </p>
 
@@ -399,7 +400,7 @@ export default function PrivacyPolicy() {
             <address className="legal-address">
               <strong>TNT agency s.r.o.</strong><br />
               Na Spravedlnosti 1533, Zelené Předměstí, 530 02 Pardubice<br />
-              Email: <a href="mailto:jobbohemiacz@gmail.com">jobbohemiacz@gmail.com</a><br />
+              Email: <a href={`mailto:${OPERATOR_EMAIL}`}>{OPERATOR_EMAIL}</a><br />
               Phone: <a href="tel:+420776858284">+420 776 858 284</a>
             </address>
 

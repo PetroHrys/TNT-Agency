@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { OPERATOR_EMAIL } from '../lib/content/trust-data'
 
 const schema = {
   '@context': 'https://schema.org',
@@ -61,10 +62,10 @@ export default function SubmitAgency() {
               <a
                 className="btn btn-primary btn-lg contact-cta-card__btn"
                 data-i18n="pages.cardBtn"
-                href="mailto:jobbohemiacz@gmail.com?subject=Registrace%20agentury%20%E2%80%93%20TalentPartnerID"
+                href={`mailto:${OPERATOR_EMAIL}?subject=Registrace%20agentury%20%E2%80%93%20TalentPartnerID`}
               >Napsat e-mail</a>
               <p className="contact-cta-card__line">
-                <span data-i18n="pages.cardEmailLabel">E-mail:</span> <a href="mailto:jobbohemiacz@gmail.com">jobbohemiacz@gmail.com</a>
+                <span data-i18n="pages.cardEmailLabel">E-mail:</span> <a href={`mailto:${OPERATOR_EMAIL}`}>{OPERATOR_EMAIL}</a>
               </p>
               <p className="contact-cta-card__line">
                 <span data-i18n="pages.cardPhoneLabel">Telefon:</span> <a href="tel:+420776858284">+420 776 858 284</a>

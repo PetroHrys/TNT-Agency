@@ -87,7 +87,9 @@ describe('static legal pages — asset & link integrity', () => {
       const html = read('public/' + n)
       expect(html).toContain('TNT agency s.r.o.')
       expect(/TNT agency(?! s\.r\.o\.)/.test(html)).toBe(false)
-      for (const m of Array.from(html.matchAll(/jobbohemiacz@[\w.]+/g))) expect(m[0]).toBe('jobbohemiacz@gmail.com')
+      for (const m of Array.from(html.matchAll(/[\w.+-]+@talentpartnerid\.com/g))) expect(m[0]).toBe('connect@talentpartnerid.com')
+      expect(html, `${n} lost its contact link`).toContain('href="mailto:connect@talentpartnerid.com"')
+      expect(html, `${n} still carries the retired address`).not.toContain('jobbohemiacz@gmail.com')
     }
   })
 

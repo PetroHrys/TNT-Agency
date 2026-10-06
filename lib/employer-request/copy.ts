@@ -12,9 +12,12 @@
 import type { Locale } from '../content/types'
 import type { AttributionField } from '../attribution'
 import type { ErrorCode } from './validate'
+import { OPERATOR_EMAIL } from '../content/trust-data'
 
 export const OPERATOR = 'TNT agency s.r.o.'
-export const OPERATOR_EMAIL = 'jobbohemiacz@gmail.com'
+// Re-exported, never redeclared: a second literal here would let the employer
+// recipient drift from the candidate recipient and the footer.
+export { OPERATOR_EMAIL }
 
 export interface RequestCopy {
   // Page / SEO

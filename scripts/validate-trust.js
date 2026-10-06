@@ -26,7 +26,9 @@ const DATA = read('lib/content/trust-data.ts');
 const PAGE = fs.existsSync(path.join(ROOT, 'pages/o-nas.tsx')) ? read('pages/o-nas.tsx') : '';
 
 const APPROVED_NAME = 'TNT agency s.r.o.';
-const APPROVED_EMAIL = 'jobbohemiacz@gmail.com';
+const APPROVED_EMAIL = 'connect@talentpartnerid.com';
+// Retired 2026-10-05. Any reappearance is a regression, not a variant.
+const RETIRED_EMAILS = ['jobbohemiacz@gmail.com'];
 const PERMIT_FIELDS = ['companyId', 'agencyPermission', 'permissionScope', 'permissionValidity'];
 
 // ── Parse each `field: { ... }` block out of TRUST_DATA ──────────────────────
@@ -75,7 +77,10 @@ if (PAGE) {
   }
   // Operator identity on the page.
   if (/TNT agency(?! s\.r\.o\.)/.test(PAGE)) errors.push('o-nas.tsx uses an altered legal-entity form');
-  for (const m of PAGE.matchAll(/jobbohemiacz@[\w.]+/g)) if (m[0] !== APPROVED_EMAIL) errors.push(`altered contact email "${m[0]}" in o-nas.tsx`);
+  for (const m of PAGE.matchAll(/[\w.+-]+@talentpartnerid\.com/g)) if (m[0] !== APPROVED_EMAIL) errors.push(`altered contact email "${m[0]}" in o-nas.tsx`);
+}
+for (const [name, src] of [['trust-data.ts', DATA], ['o-nas.tsx', PAGE]]) {
+  for (const retired of RETIRED_EMAILS) if (src.includes(retired)) errors.push(`retired contact email "${retired}" in ${name}`);
 }
 
 // ── Placeholders anywhere in the trust surfaces ─────────────────────────────

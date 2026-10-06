@@ -22,7 +22,9 @@ const SCRIPT = path.join(ROOT, 'public', 'script.js');
 const SCAN_DIRS = [path.join(ROOT, 'components'), path.join(ROOT, 'pages')];
 const LANGS = ['en', 'cs', 'de'];
 const LEGAL_ENTITY = 'TNT agency s.r.o.';
-const CONTACT_EMAIL = 'jobbohemiacz@gmail.com';
+const CONTACT_EMAIL = 'connect@talentpartnerid.com';
+// Retired 2026-10-05. Any reappearance is a regression, not a variant.
+const RETIRED_EMAILS = ['jobbohemiacz@gmail.com'];
 
 /** Byte offset of each `  <lang>: {` marker, plus end-of-object. */
 function languageRegions(text) {
@@ -150,8 +152,11 @@ function validate() {
     if (/TNT agency(?! s\.r\.o\.)/.test(regions[l])) {
       errors.push(`Altered legal-entity form (not "${LEGAL_ENTITY}") in ${l}`);
     }
-    for (const m of regions[l].matchAll(/jobbohemiacz@[\w.]+/g)) {
+    for (const m of regions[l].matchAll(/[\w.+-]+@talentpartnerid\.com/g)) {
       if (m[0] !== CONTACT_EMAIL) errors.push(`Altered contact email "${m[0]}" in ${l}`);
+    }
+    for (const retired of RETIRED_EMAILS) {
+      if (regions[l].includes(retired)) errors.push(`Retired contact email "${retired}" in ${l}`);
     }
   }
 

@@ -2,7 +2,7 @@
 
 **Status:** active operating procedure
 **Applies to:** employer staffing requests arriving from talentpartnerid.com
-**Operator:** TNT agency s.r.o. · jobbohemiacz@gmail.com
+**Operator:** TNT agency s.r.o. · connect@talentpartnerid.com
 
 This is **documentation only**. Nothing here is automated. There is no CRM, no
 database, no Gmail API integration and no scheduled job. Labels and steps below

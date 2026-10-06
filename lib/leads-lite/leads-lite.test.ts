@@ -79,12 +79,12 @@ describe('Phase E Lite — mailto transport', () => {
     expect(/class (NetlifyFunction|EmailApi|Database)LeadTransport/.test(TRANSPORT_CODE)).toBe(false)
   })
 
-  it('addresses the preserved operator mailbox', () => {
+  it('addresses the approved operator mailbox', () => {
     const p = transport.prepare(validValues(), { locale: 'cs', now: AT })
-    expect(p.to).toBe('jobbohemiacz@gmail.com')
-    expect(p.mailtoUrl.startsWith('mailto:jobbohemiacz@gmail.com?')).toBe(true)
+    expect(p.to).toBe('connect@talentpartnerid.com')
+    expect(p.mailtoUrl.startsWith('mailto:connect@talentpartnerid.com?')).toBe(true)
     expect(OPERATOR).toBe('TNT agency s.r.o.')
-    expect(OPERATOR_EMAIL).toBe('jobbohemiacz@gmail.com')
+    expect(OPERATOR_EMAIL).toBe('connect@talentpartnerid.com')
   })
 
   it('puts the reference in the subject, localized per language', () => {
